@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-first-deployment
+
+spec:
+  replicas: 3
+
+  selector:
+    matchLabels:
+      app: my-web-appimage
+
+  template:
+    metadata:
+      name: this-is-pod
+      labels:
+        app: my-web-appimage
+    spec:
+      containers:
+        - image: emanos2022/appimage2
+          imagePullPolicy: IfNotPresent
+          name: my-appimage2
+          ports:
+            - containerPort: 80
